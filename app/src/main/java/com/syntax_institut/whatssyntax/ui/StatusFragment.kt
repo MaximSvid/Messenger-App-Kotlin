@@ -21,13 +21,14 @@ class StatusFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentStatusBinding.inflate(layoutInflater)
+        viewModel.loadContactList()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.chatsList.observe(viewLifecycleOwner) {
+        viewModel.contactList.observe(viewLifecycleOwner) {
             binding.rvContacts.adapter = StatusAdapter(it, viewModel)
         }
 

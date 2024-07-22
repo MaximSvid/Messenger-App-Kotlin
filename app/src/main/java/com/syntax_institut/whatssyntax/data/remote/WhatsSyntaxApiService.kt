@@ -47,7 +47,7 @@ interface WhatsSyntaxApiService {
         @Query("key") key: String
     ): List<Chats>
 
-    @GET ("group/9/contacts")
+    @GET ("group/{number}/contacts")
     suspend fun getContactsList (
         @Path("number") number: Int,
         @Query("key") key: String

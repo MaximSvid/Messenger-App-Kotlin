@@ -14,7 +14,7 @@ import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
 
 class StatusAdapter (
-    var dataset: List<Chats>,
+    var dataset: List<Contact>,
     val viewModel: MainViewModel
     ): RecyclerView.Adapter<StatusAdapter.ItemViewHolder>() {
 
@@ -25,14 +25,14 @@ class StatusAdapter (
     }
 
     override fun onBindViewHolder(holder: StatusAdapter.ItemViewHolder, position: Int) {
-        dataset = dataset.sortedBy { it.contact.status == null }
+        dataset = dataset.sortedBy { it.status == null }
         val items = dataset[position]
 
-        holder.binding.tvContactName.text = items.contact.name
+        holder.binding.tvContactName.text = items.name
 
-        val imageUrl = "http://81.169.201.230:8080" + items.contact.image
+        val imageUrl = "http://81.169.201.230:8080" + items.image
 
-        if (items.contact.status == null) {
+        if (items.status == null) {
             holder.binding.ivContactImage.load(imageUrl) {
                 val colorMatrix = ColorMatrix()
                 colorMatrix.setSaturation(0f)
