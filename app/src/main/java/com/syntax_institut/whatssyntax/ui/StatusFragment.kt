@@ -28,7 +28,7 @@ class StatusFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.chatsList.observe(viewLifecycleOwner) {
-            binding.rvContacts.adapter = StatusAdapter(it)
+            binding.rvContacts.adapter = StatusAdapter(it, viewModel)
         }
 
     }
