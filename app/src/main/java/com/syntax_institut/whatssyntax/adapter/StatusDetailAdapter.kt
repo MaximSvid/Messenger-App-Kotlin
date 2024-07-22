@@ -15,8 +15,7 @@ import com.syntax_institut.whatssyntax.model.Status
 import com.syntax_institut.whatssyntax.ui.StatusFragmentDirections
 
 class StatusDetailAdapter (
-    var dataset: List<String>,
-    val viewModel: MainViewModel
+    var dataset: List<String>
 ): RecyclerView.Adapter<StatusDetailAdapter.ItemViewHolder>() {
 
     inner class ItemViewHolder(val binding: ItemStatusBinding) : RecyclerView.ViewHolder (binding.root)
