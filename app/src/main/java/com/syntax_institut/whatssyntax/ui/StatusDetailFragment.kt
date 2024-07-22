@@ -10,6 +10,10 @@ import androidx.navigation.fragment.findNavController
 import com.syntax_institut.whatssyntax.MainViewModel
 import com.syntax_institut.whatssyntax.adapter.StatusDetailAdapter
 import com.syntax_institut.whatssyntax.databinding.FragmentStatusDetailBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class StatusDetailFragment: Fragment() {
 
@@ -28,10 +32,16 @@ class StatusDetailFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val statusImages = viewMode.currentContact.value?.status?.images ?: emptyList()
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(500)
 
-        binding.rvFragmentStatusDetail.adapter = StatusDetailAdapter (statusImages)
-        binding.btnBackStatusDetailFragment.setOnClickListener {
+            val statusImages = viewMode.currentContact.value?.status?.images ?: emptyList()
+
+            binding.rvFragmentStatusDetail.adapter = StatusDetailAdapter (statusImages)
+
+        }
+
+              binding.btnBackStatusDetailFragment.setOnClickListener {
             findNavController().navigateUp()
         }
 
