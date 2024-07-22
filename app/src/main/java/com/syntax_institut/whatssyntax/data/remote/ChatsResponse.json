@@ -1,0 +1,162 @@
+[
+  {
+    "id": 0,
+    "contact": {
+      "id": 2,
+      "name": "Emily Johnson",
+      "number": "111-222-3333",
+      "image": "/images/pp_03.png",
+      "status": null
+    },
+    "lastMessage": {
+      "text": "Klingt super, ich komme mit!",
+      "incoming": true
+    }
+  },
+  {
+    "id": 1,
+    "contact": {
+      "id": 6,
+      "name": "Leon Wilson",
+      "number": "654-987-3210",
+      "image": "/images/pp_07.png",
+      "status": null
+    },
+    "lastMessage": {
+      "text": "Perfekt, bis später!",
+      "incoming": true
+    }
+  },
+  {
+    "id": 2,
+    "contact": {
+      "id": 7,
+      "name": "Daniel Taylor",
+      "number": "987-654-3210",
+      "image": "/images/pp_08.png",
+      "status": null
+    },
+    "lastMessage": {
+      "text": "Super, ich warte vor dem Büro auf dich.",
+      "incoming": true
+    }
+  },
+  {
+    "id": 3,
+    "contact": {
+      "id": 8,
+      "name": "Chris Miller",
+      "number": "444-555-6666",
+      "image": "/images/pp_09.png",
+      "status": null
+    },
+    "lastMessage": {
+      "text": "Alles klar, mache ich.",
+      "incoming": true
+    }
+  },
+  {
+    "id": 4,
+    "contact": {
+      "id": 3,
+      "name": "Tom Brown",
+      "number": "555-666-7777",
+      "image": "/images/pp_04.png",
+      "status": null
+    },
+    "lastMessage": {
+      "text": "Viel Erfolg beim Meeting!",
+      "incoming": false
+    }
+  },
+  {
+    "id": 5,
+    "contact": {
+      "id": 0,
+      "name": "Anna Smith",
+      "number": "123-456-7890",
+      "image": "/images/pp_01.png",
+      "status": {
+        "images": [
+          "/images/status_01.jpg",
+          "/images/status_02.jpg",
+          "/images/status_03.jpg"
+        ]
+      }
+    },
+    "lastMessage": {
+      "text": "Bis später!",
+      "incoming": false
+    }
+  },
+  {
+    "id": 6,
+    "contact": {
+      "id": 1,
+      "name": "John Doe",
+      "number": "321-654-0987",
+      "image": "/images/pp_02.png",
+      "status": null
+    },
+    "lastMessage": {
+      "text": "Freut mich, dass es dir gefällt!",
+      "incoming": false
+    }
+  },
+  {
+    "id": 7,
+    "contact": {
+      "id": 5,
+      "name": "Mike Davis",
+      "number": "246-135-7920",
+      "image": "/images/pp_06.png",
+      "status": {
+        "images": [
+          "/images/status_04.jpg",
+          "/images/status_05.jpg",
+          "/images/status_06.jpg",
+          "/images/status_07.jpg"
+        ]
+      }
+    },
+    "lastMessage": {
+      "text": "Perfekt, ich freue mich!",
+      "incoming": false
+    }
+  },
+  {
+    "id": 8,
+    "contact": {
+      "id": 9,
+      "name": "Kevin Adams",
+      "number": "333-444-5555",
+      "image": "/images/pp_10.png",
+      "status": {
+        "images": [
+          "/images/status_08.jpg"
+        ]
+      }
+    },
+    "lastMessage": {
+      "text": "Ok, lass mich wissen, wenn du etwas brauchst.",
+      "incoming": false
+    }
+  },
+  {
+    "id": 9,
+    "contact": {
+      "id": 4,
+      "name": "Sara Williams",
+      "number": "888-999-0000",
+      "image": "/images/pp_05.png",
+      "status": null
+    },
+    "lastMessage": {
+      "text": "Nein, das war's. Danke!",
+      "incoming": false
+    }
+  }
+]
+
+
+

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.syntax_institut.whatssyntax.MainViewModel
+import com.syntax_institut.whatssyntax.adapter.StatusAdapter
 import com.syntax_institut.whatssyntax.databinding.FragmentStatusBinding
 
 class StatusFragment: Fragment() {
@@ -25,6 +26,10 @@ class StatusFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.chatsList.observe(viewLifecycleOwner) {
+            binding.rvContacts.adapter = StatusAdapter(it)
+        }
 
     }
 
