@@ -28,11 +28,10 @@ class StatusDetailFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewMode.status.observe(viewLifecycleOwner) {
-            binding.rvFragmentStatusDetail.adapter = StatusDetailAdapter(it, viewMode)
+//       binding.rvFragmentStatusDetail.adapter = StatusDetailAdapter(viewMode.currentContact.value!!.status!!.images)
 
-        }
-
+        val statusImages = viewMode.currentContact.value?.status?.images ?: emptyList()
+        binding.rvFragmentStatusDetail.adapter = StatusDetailAdapter (statusImages, viewMode)
         binding.btnBackStatusDetailFragment.setOnClickListener {
             findNavController().navigateUp()
         }

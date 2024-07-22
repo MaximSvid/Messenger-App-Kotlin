@@ -15,7 +15,7 @@ import com.syntax_institut.whatssyntax.model.Status
 import com.syntax_institut.whatssyntax.ui.StatusFragmentDirections
 
 class StatusDetailAdapter (
-    var dataset: List<Status>,
+    var dataset: List<String>,
     val viewModel: MainViewModel
 ): RecyclerView.Adapter<StatusDetailAdapter.ItemViewHolder>() {
 
@@ -28,12 +28,9 @@ class StatusDetailAdapter (
     override fun onBindViewHolder(holder: StatusDetailAdapter.ItemViewHolder, position: Int) {
         val items = dataset[position]
 
-        val url = "http://81.169.201.230:8080" + items.images
+        val url = "http://81.169.201.230:8080" + items
 
         holder.binding.ivStatusDetail.load(url)
-
-
-
 
     }
 
