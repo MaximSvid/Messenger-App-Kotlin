@@ -31,11 +31,7 @@
     <fragment
         android:id="@+id/statusDetailFragment"
         android:name="com.syntax_institut.whatssyntax.ui.StatusDetailFragment"
-        android:label="StatusDetailFragment" >
-        <argument
-            android:name="status"
-            app:argType="string" />
-    </fragment>
+        android:label="StatusDetailFragment" />
     <fragment
         android:id="@+id/notesFragment"
         android:name="com.syntax_institut.whatssyntax.ui.NotesFragment"

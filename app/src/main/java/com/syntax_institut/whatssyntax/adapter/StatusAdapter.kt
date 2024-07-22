@@ -4,6 +4,7 @@ import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.syntax_institut.whatssyntax.MainViewModel
@@ -12,6 +13,7 @@ import com.syntax_institut.whatssyntax.databinding.ItemNoteBinding
 import com.syntax_institut.whatssyntax.databinding.ItemStatusBinding
 import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
+import com.syntax_institut.whatssyntax.ui.StatusFragmentDirections
 
 class StatusAdapter (
     var dataset: List<Contact>,
@@ -40,6 +42,14 @@ class StatusAdapter (
             }
         } else {
             holder.binding.ivContactImage.load(imageUrl)
+        }
+
+        holder.binding.cvContact.setOnClickListener {
+            if (items.status != null) {
+                viewModel.getCurrentContact(items)
+
+                holder.itemView.findNavController().navigate(StatusFragmentDirections.actionStatusFragmentToStatusDetailFragment())
+            }
         }
 
 
