@@ -23,9 +23,13 @@ class ChatAdapter(
         val item = dataset[position]
 
         holder.binding.tvChatContactName.text = item.contact.name
-        holder.binding.ivChatContactImage.load(item.contact.image)
 
-        holder.binding.tvChatLastMess.text = item.contact.status?.toString() ?: "Unknown" //? --
+        val imageUrl = "http://81.169.201.230:8080" + item.contact.image
+        holder.binding.ivChatContactImage.load(imageUrl)
+
+        holder.binding.tvChatLastMess.text = item.lastMessage.text.toString()
+
+//        holder.binding.tvChatLastMess.text = item.contact.status?.toString() ?: "Unknown" //? --
 
 
 

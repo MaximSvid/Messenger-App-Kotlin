@@ -28,8 +28,8 @@ class Repository() {
     private var _callList = MutableLiveData <List<Calls>> ()
     val callList: LiveData<List<Calls>> = _callList
 
-    private var _profile = MutableLiveData<List<Profile>> ()
-    var profile: LiveData<List<Profile>> = _profile
+    private var _profile = MutableLiveData <Profile> ()
+    var profile: LiveData<Profile> = _profile
 
     private var _messageList = MutableLiveData<List<Message>> ()
     var messageList: LiveData<List<Message>> = _messageList
@@ -48,6 +48,15 @@ class Repository() {
         try {
             val response = WhatsSyntaxApi.retrofitService.getContactsList(9, "Dangerous")
             _contactList.postValue(response)
+        } catch (e: Exception) {
+            Log.e("RepositoryLog", e.message.toString())
+        }
+    }
+
+    suspend fun loadProfile() {
+        try {
+            val response = WhatsSyntaxApi.retrofitService.getProfile(9, "Dangerous")
+            _profile.postValue(response)
         } catch (e: Exception) {
             Log.e("RepositoryLog", e.message.toString())
         }

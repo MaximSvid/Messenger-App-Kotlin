@@ -10,6 +10,7 @@ import com.syntax_institut.whatssyntax.data.Repository
 import com.syntax_institut.whatssyntax.model.Calls
 import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
+import com.syntax_institut.whatssyntax.model.Profile
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -18,6 +19,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val chatsList = repository.chatsList
 
     val contactList = repository.contactList
+
+    val profile = repository.profile
 
 //    val status = repository.statusImage
 
@@ -30,9 +33,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private var _currentCall = MutableLiveData<List<Calls>>()
     var currentCall: LiveData<List<Calls>> = _currentCall
 
+//    private var _currentProfile = MutableLiveData<Profile>()
+//    val currentProfile: LiveData<Profile> = _currentProfile
+
     init {
         loadChatsList()
         loadContactList()
+        loadProfile()
     }
 
     fun loadChatsList() {
@@ -46,6 +53,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             repository.loadContactList()
         }
     }
+
+    fun loadProfile () {
+        viewModelScope.launch {
+            repository.loadProfile()
+        }
+    }
+
+
 
     fun getCurrentContact (selectedContact: Contact) {
         _currentContact.postValue(selectedContact)

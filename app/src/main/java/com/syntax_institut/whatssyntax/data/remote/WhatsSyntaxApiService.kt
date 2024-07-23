@@ -63,13 +63,13 @@ interface WhatsSyntaxApiService {
         @Query("key") key: String
     ) : List<Contact>
 
-    @GET ("group/{number}/profile")
+    @GET ("group/{number}/profile") // эта функция принимает информацию
     suspend fun getProfile (
         @Path ("number") number: Int,
         @Query ("key") key: String
-    )
+    ) : Profile
 
-    @POST ("group/{number}/profile")
+    @POST ("group/{number}/profile") //эта функция возвращает ответ
     suspend fun setProfile (
         @Path ("number") number: Int,
         @Body profile: Profile,
