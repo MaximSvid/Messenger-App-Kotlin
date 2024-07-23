@@ -22,8 +22,8 @@ class Repository() {
     private var _contactList = MutableLiveData<List<Contact>>()
     val contactList: LiveData<List<Contact>> = _contactList
 
-    private var _statusImage = MutableLiveData<List<Status>>()
-    val statusImage: LiveData<List<Status>> = _statusImage
+//    private var _statusImage = MutableLiveData<List<Status>>()
+//    val statusImage: LiveData<List<Status>> = _statusImage
 
     private var _callList = MutableLiveData <List<Calls>> ()
     val callList: LiveData<List<Calls>> = _callList

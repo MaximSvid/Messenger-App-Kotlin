@@ -5,11 +5,13 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.syntax_institut.whatssyntax.model.Calls
 import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
+import com.syntax_institut.whatssyntax.model.Profile
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -17,13 +19,15 @@ const val BASE_URL = "http://81.169.201.230:8080"
 
 // http://81.169.201.230:8080/group/9/chats?key=Dangerous
 
-private val logger: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
-    level = HttpLoggingInterceptor.Level.BODY
-}
+//private val logger: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
+//    level = HttpLoggingInterceptor.Level.BODY
+//}
+//
+//
+//private val httpClient = OkHttpClient.Builder()
+//    .addInterceptor(logger)
+//    .build()
 
-private val httpClient = OkHttpClient.Builder()
-    .addInterceptor(logger)
-    .build()
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -32,12 +36,12 @@ private val moshi = Moshi.Builder()
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
-    .client(httpClient)
+//    .client(httpClient)
     .build()
 
 interface WhatsSyntaxApiService {
 
-    // TODO()
+
 
     //    val number: Int = 9
 //    val key = Dangerous
@@ -58,6 +62,21 @@ interface WhatsSyntaxApiService {
     suspend fun getContactList (
         @Query("key") key: String
     ) : List<Contact>
+
+    @GET ("group/{number}/profile")
+    suspend fun getProfile (
+        @Path ("number") number: Int,
+        @Query ("key") key: String
+    )
+
+    @POST ("group/{number}/profile")
+    suspend fun setProfile (
+        @Path ("number") number: Int,
+        @Body profile: Profile,
+        @Query ("key") key: String
+    ): Profile
+
+
 
 }
 

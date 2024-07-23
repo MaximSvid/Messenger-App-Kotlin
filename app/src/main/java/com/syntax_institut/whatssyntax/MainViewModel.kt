@@ -19,7 +19,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val contactList = repository.contactList
 
-    val status = repository.statusImage
+//    val status = repository.statusImage
 
     private var _currentList = MutableLiveData<List<Chats>>()
     var currentList: LiveData<List<Chats>> = _currentList
