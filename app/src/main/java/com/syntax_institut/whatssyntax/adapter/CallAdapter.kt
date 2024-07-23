@@ -1,7 +1,10 @@
 package com.syntax_institut.whatssyntax.adapter
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.syntax_institut.whatssyntax.MainViewModel
@@ -49,6 +52,12 @@ class CallAdapter (
             } else {
                 binding.ivCallStatus.setImageResource(R.drawable.icon_call_missed)
             }
+        }
+
+        binding.cvCall.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel: ${call.contact.number}")
+            startActivity(it.context, intent, null)
         }
 
     }
