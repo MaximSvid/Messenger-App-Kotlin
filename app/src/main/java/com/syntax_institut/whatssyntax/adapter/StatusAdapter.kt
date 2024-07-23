@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.syntax_institut.whatssyntax.MainViewModel
+import com.syntax_institut.whatssyntax.data.remote.BASE_URL
 import com.syntax_institut.whatssyntax.databinding.ItemContactBinding
 import com.syntax_institut.whatssyntax.databinding.ItemNoteBinding
 import com.syntax_institut.whatssyntax.databinding.ItemStatusBinding
@@ -32,7 +33,7 @@ class StatusAdapter (
 
         holder.binding.tvContactName.text = items.name
 
-        val imageUrl = "http://81.169.201.230:8080" + items.image
+        val imageUrl = BASE_URL + items.image
 
         if (items.status == null) {
             holder.binding.ivContactImage.load(imageUrl) {
