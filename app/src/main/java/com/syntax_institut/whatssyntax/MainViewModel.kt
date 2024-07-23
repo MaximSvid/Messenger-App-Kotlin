@@ -60,6 +60,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun updateProfile(name: String, number: String, image: String) {
+        viewModelScope.launch {
+            val profile = Profile(name, number, image)
+            repository.updateProfile(profile)
+        }
+    }
+
 
 
     fun getCurrentContact (selectedContact: Contact) {

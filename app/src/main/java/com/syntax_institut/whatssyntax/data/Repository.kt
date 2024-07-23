@@ -62,5 +62,14 @@ class Repository() {
         }
     }
 
+    suspend fun updateProfile (profile: Profile) {
+        try {
+            val response = WhatsSyntaxApi.retrofitService.setProfile(9, profile, "Dangerous")
+            _profile.postValue(response)
+        } catch (e: Exception) {
+            Log.e("RepositoryLog", e.message.toString())
+        }
+    }
+
 
 }
