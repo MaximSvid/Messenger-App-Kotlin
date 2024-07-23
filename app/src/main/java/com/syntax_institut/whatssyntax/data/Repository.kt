@@ -9,21 +9,17 @@ import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
 import com.syntax_institut.whatssyntax.model.Message
 import com.syntax_institut.whatssyntax.model.Profile
-import com.syntax_institut.whatssyntax.model.Status
 
 class Repository() {
 
-    private val number = 0
-    private val key = ""
+    private val number = 9
+    private val key = "Dangerous"
 
     private var _chatsList = MutableLiveData<List<Chats>> ()
     val chatsList: LiveData<List<Chats>> = _chatsList
 
     private var _contactList = MutableLiveData<List<Contact>>()
     val contactList: LiveData<List<Contact>> = _contactList
-
-//    private var _statusImage = MutableLiveData<List<Status>>()
-//    val statusImage: LiveData<List<Status>> = _statusImage
 
     private var _callList = MutableLiveData <List<Calls>> ()
     val callList: LiveData<List<Calls>> = _callList
@@ -64,8 +60,16 @@ class Repository() {
 
     suspend fun updateProfile (profile: Profile) {
         try {
-            val response = WhatsSyntaxApi.retrofitService.setProfile(9, profile, "Dangerous")
-            _profile.postValue(response)
+             WhatsSyntaxApi.retrofitService.setProfile(number, profile, key)
+        } catch (e: Exception) {
+            Log.e("RepositoryLog", e.message.toString())
+        }
+    }
+
+    suspend fun loadCalls () {
+        try {
+            val response = WhatsSyntaxApi.retrofitService.getCalls(number, key)
+            _callList.postValue(response)
         } catch (e: Exception) {
             Log.e("RepositoryLog", e.message.toString())
         }

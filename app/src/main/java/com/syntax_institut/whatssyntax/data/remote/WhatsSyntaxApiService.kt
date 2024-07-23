@@ -6,7 +6,6 @@ import com.syntax_institut.whatssyntax.model.Calls
 import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
 import com.syntax_institut.whatssyntax.model.Profile
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
@@ -42,7 +41,6 @@ private val retrofit = Retrofit.Builder()
 interface WhatsSyntaxApiService {
 
 
-
     //    val number: Int = 9
 //    val key = Dangerous
     @GET("group/{number}/chats")
@@ -51,31 +49,36 @@ interface WhatsSyntaxApiService {
         @Query("key") key: String
     ): List<Chats>
 
-    @GET ("group/{number}/contacts")
-    suspend fun getContactsList (
+    @GET("group/{number}/contacts")
+    suspend fun getContactsList(
         @Path("number") number: Int,
         @Query("key") key: String
-    ) : List<Contact>
+    ): List<Contact>
 
 
-    @GET ("group/9/contacts")
-    suspend fun getContactList (
+    @GET("group/9/contacts")
+    suspend fun getContactList(
         @Query("key") key: String
-    ) : List<Contact>
+    ): List<Contact>
 
-    @GET ("group/{number}/profile") // эта функция принимает информацию
-    suspend fun getProfile (
-        @Path ("number") number: Int,
-        @Query ("key") key: String
-    ) : Profile
-
-    @POST ("group/{number}/profile") //эта функция возвращает ответ
-    suspend fun setProfile (
-        @Path ("number") number: Int,
-        @Body profile: Profile,
-        @Query ("key") key: String
+    @GET("group/{number}/profile") // эта функция принимает информацию
+    suspend fun getProfile(
+        @Path("number") number: Int,
+        @Query("key") key: String
     ): Profile
 
+    @POST("group/{number}/profile") //эта функция возвращает ответ
+    suspend fun setProfile(
+        @Path("number") number: Int,
+        @Body profile: Profile,
+        @Query("key") key: String
+    )
+
+    @GET("/group/{number}/calls")
+    suspend fun getCalls(
+        @Path("number") number: Int,
+        @Query("key") key: String
+    ) : List<Calls>
 
 
 }

@@ -22,7 +22,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val profile = repository.profile
 
-//    val status = repository.statusImage
+    val calls = repository.callList
 
     private var _currentList = MutableLiveData<List<Chats>>()
     var currentList: LiveData<List<Chats>> = _currentList
@@ -33,13 +33,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private var _currentCall = MutableLiveData<List<Calls>>()
     var currentCall: LiveData<List<Calls>> = _currentCall
 
-//    private var _currentProfile = MutableLiveData<Profile>()
-//    val currentProfile: LiveData<Profile> = _currentProfile
+
 
     init {
         loadChatsList()
         loadContactList()
         loadProfile()
+        loadCalls()
     }
 
     fun loadChatsList() {
@@ -64,6 +64,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             val profile = Profile(name, number, image)
             repository.updateProfile(profile)
+        }
+    }
+
+    fun loadCalls () {
+        viewModelScope.launch {
+            repository.loadCalls()
         }
     }
 

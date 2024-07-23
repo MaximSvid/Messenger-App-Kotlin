@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import coil.load
 import com.syntax_institut.whatssyntax.MainViewModel
 import com.syntax_institut.whatssyntax.R
+import com.syntax_institut.whatssyntax.data.remote.BASE_URL
 import com.syntax_institut.whatssyntax.databinding.FragmentSettingsBinding
 import com.syntax_institut.whatssyntax.model.Profile
 
@@ -31,8 +32,11 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.loadProfile()
+
+
         viewModel.profile.observe(viewLifecycleOwner) {
-            val profileImage = viewModel.profile.value?.image ?: R.drawable.pp_01
+            val profileImage = BASE_URL + (viewModel.profile.value?.image ?: R.drawable.pp_01)
             binding.ivProfile.load(profileImage)
 
             val profileName = viewModel.profile.value?.name ?: "Test Name"
@@ -44,10 +48,11 @@ class SettingsFragment : Fragment() {
 
         binding.btProfileSave.setOnClickListener {
 
-            if (binding.tietProfileName.text.toString().isNotEmpty() == true && binding.tietProfileNumber.text.toString().isNotEmpty() == true) {
+            if (binding.tietProfileName.text.toString().isNotEmpty() && binding.tietProfileNumber.text.toString().isNotEmpty()) {
                 val updateName = binding.tietProfileName.text.toString()
                 val updatePhoneNumber = binding.tietProfileNumber.text.toString()
                 val updateImage = viewModel.profile.value?.image.toString()
+
 //                val updateProfile: Profile = Profile(updateName, updatePhoneNumber, updateImage)
                 viewModel.updateProfile(updateName, updatePhoneNumber, updateImage)
             } else {
