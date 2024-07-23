@@ -2,15 +2,19 @@ package com.syntax_institut.whatssyntax.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.syntax_institut.whatssyntax.MainViewModel
+import com.syntax_institut.whatssyntax.data.remote.BASE_URL
 import com.syntax_institut.whatssyntax.databinding.ItemChatBinding
 import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
+//import com.syntax_institut.whatssyntax.ui.ChatsFragmentDirections
 
 class ChatAdapter(
-    val dataset: List<Chats>,
-
+    private val dataset: List<Chats>,
+    private val viewModel: MainViewModel
     ): RecyclerView.Adapter<ChatAdapter.ItemViewHolder>() {
 
         inner class ItemViewHolder(val binding: ItemChatBinding) : RecyclerView.ViewHolder (binding.root)
@@ -24,12 +28,16 @@ class ChatAdapter(
 
         holder.binding.tvChatContactName.text = item.contact.name
 
-        val imageUrl = "http://81.169.201.230:8080" + item.contact.image
+        val imageUrl = BASE_URL + item.contact.image
         holder.binding.ivChatContactImage.load(imageUrl)
 
         holder.binding.tvChatLastMess.text = item.lastMessage.text.toString()
 
-//        holder.binding.tvChatLastMess.text = item.contact.status?.toString() ?: "Unknown" //? --
+        holder.binding.cvChat.setOnClickListener {
+            viewModel.getCurrentCat(item)
+
+//            holder.itemView.findNavController().navigate(ChatsFragmentDirections.actionChatsFragmentToChatDetailFragment())
+        }
 
 
 

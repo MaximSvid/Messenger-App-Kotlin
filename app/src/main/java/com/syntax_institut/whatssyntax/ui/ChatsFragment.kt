@@ -30,7 +30,7 @@ class ChatsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.chatsList.observe(viewLifecycleOwner) {
-            binding.rvChats.adapter = ChatAdapter(it)
+            binding.rvChats.adapter = ChatAdapter(it, viewModel)
         }
 
     }

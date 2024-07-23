@@ -11,7 +11,11 @@
     <fragment
         android:id="@+id/chatsFragment"
         android:name="com.syntax_institut.whatssyntax.ui.ChatsFragment"
-        android:label="ChatsFragment" />
+        android:label="ChatsFragment" >
+        <action
+            android:id="@+id/action_chatsFragment_to_chatDetailFragment"
+            app:destination="@id/chatDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.syntax_institut.whatssyntax.ui.SettingsFragment"

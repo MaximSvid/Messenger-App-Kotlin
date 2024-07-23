@@ -1,7 +1,6 @@
 package com.syntax_institut.whatssyntax
 
 import android.app.Application
-import android.telecom.Call
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -24,8 +23,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val calls = repository.callList
 
-    private var _currentList = MutableLiveData<List<Chats>>()
-    var currentList: LiveData<List<Chats>> = _currentList
+    private var _currentChat = MutableLiveData<Chats>()
+    var currentChat: LiveData<Chats> = _currentChat
 
     private var _currentContact = MutableLiveData<Contact> ()
     var currentContact: LiveData<Contact> = _currentContact
@@ -77,6 +76,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getCurrentContact (selectedContact: Contact) {
         _currentContact.postValue(selectedContact)
+    }
+
+    fun getCurrentCat (selectedChat: Chats) {
+        _currentChat.postValue(selectedChat)
     }
 
 }
