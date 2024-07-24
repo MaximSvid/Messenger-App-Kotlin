@@ -22,6 +22,7 @@ class ChatDetailFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentChatDetailBinding.inflate(layoutInflater)
+        viewModel.loadChatsMessage(viewModel.currentChat.value!!.id)
         return binding.root
     }
 
@@ -31,12 +32,12 @@ class ChatDetailFragment: Fragment() {
         val currentChat = viewModel.currentChat
         val chatId: Int = currentChat.value!!.id
 
-        viewModel.loadChatsMessage( viewModel.currentChat.value!!.id)
+        viewModel.loadChatsMessage( chatId)
 
 
         viewModel.message.observe(viewLifecycleOwner) {
             binding.rvMessages.adapter = ChatDetailAdapter(it, viewModel)
-            binding.rvMessages.scrollToPosition(it.size-1)
+            binding.rvMessages.scrollToPosition(viewModel.message.value!!.lastIndex)
         }
 
         binding.btSend.setOnClickListener {
@@ -46,10 +47,10 @@ class ChatDetailFragment: Fragment() {
             if (messageText.isNotBlank()) {
                 val newMessage = Message (messageText, false)
                 viewModel.updateChatMessage(chatId, newMessage)
-                viewModel.loadChatsMessage( viewModel.currentChat.value!!.id)
+                viewModel.loadChatsMessage( chatId)
 
                 binding.tietMessage.text?.clear()
-                binding.rvMessages.scrollToPosition(viewModel.message.value!!.lastIndex)
+
 
 
 
