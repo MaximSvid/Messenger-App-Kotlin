@@ -6,8 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import coil.load
 import com.syntax_institut.whatssyntax.MainViewModel
+import com.syntax_institut.whatssyntax.R
 import com.syntax_institut.whatssyntax.adapter.ChatDetailAdapter
+import com.syntax_institut.whatssyntax.data.remote.BASE_URL
 import com.syntax_institut.whatssyntax.databinding.FragmentChatDetailBinding
 import com.syntax_institut.whatssyntax.model.Message
 
@@ -31,6 +35,14 @@ class ChatDetailFragment: Fragment() {
 
         val currentChat = viewModel.currentChat
         val chatId: Int = currentChat.value!!.id
+
+        val imageURL = BASE_URL + (viewModel.currentChat.value?.contact?.image)
+        binding.ivProfileImage.load(imageURL)
+        binding.tvContactNameDetail.setText(viewModel.currentChat.value?.contact?.name ?: "Internet probleme")
+
+        binding.ivBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
         viewModel.loadChatsMessage( chatId)
 

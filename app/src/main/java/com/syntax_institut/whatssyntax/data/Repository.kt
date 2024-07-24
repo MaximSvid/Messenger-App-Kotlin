@@ -3,6 +3,7 @@ package com.syntax_institut.whatssyntax.data
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.syntax_institut.whatssyntax.BuildConfig
 import com.syntax_institut.whatssyntax.data.remote.WhatsSyntaxApi
 import com.syntax_institut.whatssyntax.model.Calls
 import com.syntax_institut.whatssyntax.model.Chats
@@ -13,7 +14,7 @@ import com.syntax_institut.whatssyntax.model.Profile
 class Repository() {
 
     private val number = 9
-    private val key = "Dangerous"
+    private val key = BuildConfig.apiKey
 
     private var _chatsList = MutableLiveData<List<Chats>> ()
     val chatsList: LiveData<List<Chats>> = _chatsList
