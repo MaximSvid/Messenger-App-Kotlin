@@ -6,6 +6,7 @@ import com.syntax_institut.whatssyntax.model.Calls
 import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
 import com.syntax_institut.whatssyntax.model.Profile
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
@@ -78,7 +79,14 @@ interface WhatsSyntaxApiService {
     suspend fun getCalls(
         @Path("number") number: Int,
         @Query("key") key: String
-    ) : List<Calls>
+    ): List<Calls>
+
+    @GET("/group/{number}/chat/{chatId}")
+    suspend fun getChatMessage(
+        @Path("number") number: Int,
+        @Query("chatId") chatId: Chats,
+        @Query("key") key: String
+    ): List<Chats>
 
 
 }

@@ -32,9 +32,6 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.loadProfile()
-
-
         viewModel.profile.observe(viewLifecycleOwner) {
             val profileImage = BASE_URL + (viewModel.profile.value?.image ?: R.drawable.pp_01)
             binding.ivProfile.load(profileImage)
@@ -53,7 +50,6 @@ class SettingsFragment : Fragment() {
                 val updatePhoneNumber = binding.tietProfileNumber.text.toString()
                 val updateImage = viewModel.profile.value?.image.toString()
 
-//                val updateProfile: Profile = Profile(updateName, updatePhoneNumber, updateImage)
                 viewModel.updateProfile(updateName, updatePhoneNumber, updateImage)
             } else {
                 Toast.makeText(context, "Please fill in all fields", Toast.LENGTH_SHORT).show()

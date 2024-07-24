@@ -51,7 +51,7 @@ class Repository() {
 
     suspend fun loadProfile() {
         try {
-            val response = WhatsSyntaxApi.retrofitService.getProfile(9, "Dangerous")
+            val response = WhatsSyntaxApi.retrofitService.getProfile(number, key)
             _profile.postValue(response)
         } catch (e: Exception) {
             Log.e("RepositoryLog", e.message.toString())
@@ -71,6 +71,15 @@ class Repository() {
             val response = WhatsSyntaxApi.retrofitService.getCalls(number, key)
             _callList.postValue(response)
         } catch (e: Exception) {
+            Log.e("RepositoryLog", e.message.toString())
+        }
+    }
+
+    suspend fun loadChatMessages(chatId: Chats) {
+        try {
+            val response = WhatsSyntaxApi.retrofitService.getChatMessage(number, chatId , key)
+            _chatsList.postValue(response)
+        } catch (e: Exception){
             Log.e("RepositoryLog", e.message.toString())
         }
     }

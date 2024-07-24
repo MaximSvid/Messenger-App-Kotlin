@@ -39,6 +39,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         loadContactList()
         loadProfile()
         loadCalls()
+
     }
 
     fun loadChatsList() {
@@ -80,6 +81,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getCurrentCat (selectedChat: Chats) {
         _currentChat.postValue(selectedChat)
+    }
+
+    fun loadChatsMessage (selectedChatId: Chats) {
+        viewModelScope.launch {
+            repository.loadChatMessages(selectedChatId)
+        }
     }
 
 }
