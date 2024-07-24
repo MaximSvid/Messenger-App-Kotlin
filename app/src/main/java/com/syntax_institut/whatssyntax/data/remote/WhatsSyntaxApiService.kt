@@ -7,6 +7,8 @@ import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
 import com.syntax_institut.whatssyntax.model.Message
 import com.syntax_institut.whatssyntax.model.Profile
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
@@ -19,14 +21,14 @@ const val BASE_URL = "http://81.169.201.230:8080"
 
 // http://81.169.201.230:8080/group/9/chats?key=Dangerous
 
-//private val logger: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
-//    level = HttpLoggingInterceptor.Level.BODY
-//}
-//
-//
-//private val httpClient = OkHttpClient.Builder()
-//    .addInterceptor(logger)
-//    .build()
+private val logger: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
+    level = HttpLoggingInterceptor.Level.BODY
+}
+
+
+private val httpClient = OkHttpClient.Builder()
+    .addInterceptor(logger)
+    .build()
 
 
 private val moshi = Moshi.Builder()
@@ -36,7 +38,7 @@ private val moshi = Moshi.Builder()
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
-//    .client(httpClient)
+    .client(httpClient)
     .build()
 
 interface WhatsSyntaxApiService {
