@@ -13,7 +13,7 @@
         android:name="com.syntax_institut.whatssyntax.ui.ChatsFragment"
         android:label="ChatsFragment" >
         <action
-            android:id="@+id/action_chatsFragment_to_chatDetailFragment"
+            android:id="@+id/action_chatsFragment_to_chatDetailFragment2"
             app:destination="@id/chatDetailFragment" />
     </fragment>
     <fragment

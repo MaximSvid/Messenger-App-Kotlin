@@ -9,6 +9,7 @@ import com.syntax_institut.whatssyntax.data.Repository
 import com.syntax_institut.whatssyntax.model.Calls
 import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
+import com.syntax_institut.whatssyntax.model.Message
 import com.syntax_institut.whatssyntax.model.Profile
 import kotlinx.coroutines.launch
 
@@ -23,6 +24,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val calls = repository.callList
 
+    val message = repository.messageList
+
     private var _currentChat = MutableLiveData<Chats>()
     var currentChat: LiveData<Chats> = _currentChat
 
@@ -31,6 +34,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private var _currentCall = MutableLiveData<List<Calls>>()
     var currentCall: LiveData<List<Calls>> = _currentCall
+
+    private var _message = MutableLiveData<Message>()
 
 
 
@@ -79,13 +84,20 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         _currentContact.postValue(selectedContact)
     }
 
-    fun getCurrentCat (selectedChat: Chats) {
+    fun getCurrentCath (selectedChat: Chats) {
         _currentChat.postValue(selectedChat)
     }
 
-    fun loadChatsMessage (selectedChatId: Chats) {
+    fun loadChatsMessage (chatId: Int) {
         viewModelScope.launch {
-            repository.loadChatMessages(selectedChatId)
+            repository.loadChatMessages(chatId)
+        }
+    }
+
+    fun updateChatMessage (text: String, incoming: Boolean) {
+        viewModelScope.launch {
+            val message = Message (text, incoming)
+            repository.updateChatMessage(message)
         }
     }
 

@@ -9,9 +9,10 @@ import com.syntax_institut.whatssyntax.databinding.ItemChatBinding
 import com.syntax_institut.whatssyntax.databinding.ItemChatInBinding
 import com.syntax_institut.whatssyntax.databinding.ItemChatOutBinding
 import com.syntax_institut.whatssyntax.model.Chats
+import com.syntax_institut.whatssyntax.model.Message
 
 class ChatDetailAdapter(
-    private val dataset: List<Chats>,
+    private val dataset: List<Message>,
     private val viewModel: MainViewModel
     ) : RecyclerView.Adapter<ViewHolder>() {
 
@@ -27,7 +28,7 @@ class ChatDetailAdapter(
     override fun getItemViewType(position: Int): Int {
         val message = dataset[position]
 
-        if (message.lastMessage.incoming) {
+        if (message.incoming) {
             return incomingType
         }
         return outgoingType
@@ -47,10 +48,12 @@ class ChatDetailAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val message = dataset[position]
 
+
+
         if (holder is IncomingViewHolder){
-            holder.incomingBinding.tvMessageIn.text = message.lastMessage.text
+            holder.incomingBinding.tvMessageIn.text = message.text
         } else if (holder is OutgoingViewHolder) {
-            holder.outgoingBinding.tvMessageOut.text = message.lastMessage.text
+            holder.outgoingBinding.tvMessageOut.text = message.text
         }
     }
 

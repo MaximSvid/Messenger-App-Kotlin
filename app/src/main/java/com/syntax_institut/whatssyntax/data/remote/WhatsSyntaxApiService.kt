@@ -5,6 +5,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.syntax_institut.whatssyntax.model.Calls
 import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
+import com.syntax_institut.whatssyntax.model.Message
 import com.syntax_institut.whatssyntax.model.Profile
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -84,9 +85,16 @@ interface WhatsSyntaxApiService {
     @GET("/group/{number}/chat/{chatId}")
     suspend fun getChatMessage(
         @Path("number") number: Int,
-        @Query("chatId") chatId: Chats,
+        @Path("chatId") chatId: Int,
         @Query("key") key: String
-    ): List<Chats>
+    ): List<Message>
+
+    @POST ("/group/{number}/chats/{chatId}/new-message")
+    suspend fun setMessage (
+        @Path ("number") number: Int,
+        @Body message: Message,
+        @Query ("key") key: String
+    )
 
 
 }

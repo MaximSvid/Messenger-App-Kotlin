@@ -9,7 +9,8 @@ import com.syntax_institut.whatssyntax.MainViewModel
 import com.syntax_institut.whatssyntax.data.remote.BASE_URL
 import com.syntax_institut.whatssyntax.databinding.ItemChatBinding
 import com.syntax_institut.whatssyntax.model.Chats
-import com.syntax_institut.whatssyntax.model.Contact
+import com.syntax_institut.whatssyntax.ui.ChatsFragmentDirections
+
 //import com.syntax_institut.whatssyntax.ui.ChatsFragmentDirections
 
 class ChatAdapter(
@@ -34,9 +35,9 @@ class ChatAdapter(
         holder.binding.tvChatLastMess.text = item.lastMessage.text.toString()
 
         holder.binding.cvChat.setOnClickListener {
-            viewModel.getCurrentCat(item)
+            viewModel.getCurrentCath(item)
+            holder.itemView.findNavController().navigate(ChatsFragmentDirections.actionChatsFragmentToChatDetailFragment2())
 
-//            holder.itemView.findNavController().navigate(ChatsFragmentDirections.actionChatsFragmentToChatDetailFragment())
         }
 
 
