@@ -7,7 +7,6 @@ import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
 import com.syntax_institut.whatssyntax.model.Message
 import com.syntax_institut.whatssyntax.model.Profile
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
@@ -89,27 +88,14 @@ interface WhatsSyntaxApiService {
         @Query("key") key: String
     ): List<Message>
 
-//    @POST ("/group/{number}/chats/{chatId}/new-message")
-//    suspend fun setMessage (
-//        @Path ("number") number: Int,
-//        @Body message: Message,
-//        @Query ("key") key: String
-//    )
-
-
-    @GET("")
-    suspend fun getMessage(
-
-    )
 
     @POST ("/group/{number}/chats/{chatId}/new-message")
-    suspend fun setMessage (
+    suspend fun sendMessage (
         @Path ("number") number: Int,
         @Path("chatId") chatId: Int,
         @Body message: Message,
         @Query ("key") key: String
     )
-
 
 }
 

@@ -86,7 +86,7 @@ class Repository() {
 
     suspend fun sendChatMessage(message: Message, chatId: Int){
         try {
-            WhatsSyntaxApi.retrofitService.setMessage(number, chatId, message,  key)
+            WhatsSyntaxApi.retrofitService.sendMessage(number, chatId, message,  key)
         } catch (e: Exception) {
             Log.e("RepositoryLog", e.message.toString())
         }

@@ -46,7 +46,10 @@ class ChatDetailFragment: Fragment() {
             if (messageText.isNotBlank()) {
                 val newMessage = Message (messageText, false)
                 viewModel.updateChatMessage(chatId, newMessage)
+                viewModel.loadChatsMessage( viewModel.currentChat.value!!.id)
+
                 binding.tietMessage.text?.clear()
+                binding.rvMessages.scrollToPosition(viewModel.message.value!!.lastIndex)
 
 
 
