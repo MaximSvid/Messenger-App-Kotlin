@@ -28,11 +28,15 @@ class ChatDetailFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val currentChat = viewModel.currentChat
+        val chatId: Int = currentChat.value!!.id
+
         viewModel.loadChatsMessage( viewModel.currentChat.value!!.id)
 
 
         viewModel.message.observe(viewLifecycleOwner) {
             binding.rvMessages.adapter = ChatDetailAdapter(it, viewModel)
+            binding.rvMessages.scrollToPosition(it.size-1)
         }
 
         binding.btSend.setOnClickListener {
@@ -40,7 +44,8 @@ class ChatDetailFragment: Fragment() {
             val messageText = binding.tietMessage.text.toString()
 
             if (messageText.isNotBlank()) {
-                viewModel.updateChatMessage(messageText, false)
+                val newMessage = Message (messageText, false)
+                viewModel.updateChatMessage(chatId, newMessage)
                 binding.tietMessage.text?.clear()
 
 

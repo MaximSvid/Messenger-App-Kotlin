@@ -39,6 +39,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
+
+
+
     init {
         loadChatsList()
         loadContactList()
@@ -94,10 +97,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun updateChatMessage (text: String, incoming: Boolean) {
+
+
+
+    fun updateChatMessage (chatId: Int, message: Message) {
         viewModelScope.launch {
-            val message = Message (text, incoming)
-            repository.updateChatMessage(message)
+            repository.sendChatMessage(message, chatId)
+
         }
     }
 

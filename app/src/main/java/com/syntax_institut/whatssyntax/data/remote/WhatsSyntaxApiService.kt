@@ -62,7 +62,7 @@ interface WhatsSyntaxApiService {
     suspend fun getContactList(
         @Query("key") key: String
     ): List<Contact>
-
+//------------
     @GET("group/{number}/profile") // эта функция принимает информацию
     suspend fun getProfile(
         @Path("number") number: Int,
@@ -75,7 +75,7 @@ interface WhatsSyntaxApiService {
         @Body profile: Profile,
         @Query("key") key: String
     )
-
+//-----------
     @GET("/group/{number}/calls")
     suspend fun getCalls(
         @Path("number") number: Int,
@@ -89,9 +89,23 @@ interface WhatsSyntaxApiService {
         @Query("key") key: String
     ): List<Message>
 
+//    @POST ("/group/{number}/chats/{chatId}/new-message")
+//    suspend fun setMessage (
+//        @Path ("number") number: Int,
+//        @Body message: Message,
+//        @Query ("key") key: String
+//    )
+
+
+    @GET("")
+    suspend fun getMessage(
+
+    )
+
     @POST ("/group/{number}/chats/{chatId}/new-message")
     suspend fun setMessage (
         @Path ("number") number: Int,
+        @Path("chatId") chatId: Int,
         @Body message: Message,
         @Query ("key") key: String
     )

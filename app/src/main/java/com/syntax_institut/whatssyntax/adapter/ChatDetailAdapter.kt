@@ -12,7 +12,7 @@ import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Message
 
 class ChatDetailAdapter(
-    private val dataset: List<Message>,
+    private var dataset: List<Message>,
     private val viewModel: MainViewModel
     ) : RecyclerView.Adapter<ViewHolder>() {
 
@@ -60,4 +60,5 @@ class ChatDetailAdapter(
     override fun getItemCount(): Int {
         return dataset.size
     }
+
 }
