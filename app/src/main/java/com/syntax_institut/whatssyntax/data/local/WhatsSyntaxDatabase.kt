@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.syntax_institut.whatssyntax.model.NotesData
 
-@Database (entities = [NotesData::class], version = 1)
+@Database (entities = [NotesData::class], version = 2)
 abstract class  NotesDatabase: RoomDatabase() {
 
     abstract val notesDAO: WhatsSyntaxDatabaseDao
@@ -22,6 +22,7 @@ fun getDatabase (context: Context): NotesDatabase {
                 NotesDatabase::class.java,
                 "notes_database"
             )
+//                .fallbackToDestructiveMigration()
                 .build()
         }
         return INSTANCE
