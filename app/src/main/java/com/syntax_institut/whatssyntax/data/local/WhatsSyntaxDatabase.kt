@@ -6,15 +6,15 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.syntax_institut.whatssyntax.model.NotesData
 
-@Database (entities = [NotesData::class], version = 2)
-abstract class  NotesDatabase: RoomDatabase() {
+@Database(entities = [NotesData::class], version = 3)
+abstract class NotesDatabase : RoomDatabase() {
 
     abstract val notesDAO: WhatsSyntaxDatabaseDao
 }
 
 private lateinit var INSTANCE: NotesDatabase
 
-fun getDatabase (context: Context): NotesDatabase {
+fun getDatabase(context: Context): NotesDatabase {
     synchronized(NotesDatabase::class.java) {
         if (!::INSTANCE.isInitialized) {
             INSTANCE = Room.databaseBuilder(
@@ -22,7 +22,7 @@ fun getDatabase (context: Context): NotesDatabase {
                 NotesDatabase::class.java,
                 "notes_database"
             )
-//                .fallbackToDestructiveMigration()
+                .fallbackToDestructiveMigration()
                 .build()
         }
         return INSTANCE

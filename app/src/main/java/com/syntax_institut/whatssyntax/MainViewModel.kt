@@ -56,6 +56,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun addNote(note: NotesData) {
+        viewModelScope.launch {
+            repository.addNote(note)
+        }
+    }
+
 
 
 
@@ -65,27 +71,27 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         loadProfile()
         loadCalls()
 
-        insertNotesList()
+//        insertNotesList()
 
     }
 
-    fun insertNotesList () {
-        viewModelScope.launch {
-            val notes = listOf(
-                NotesExampleData.test1,
-                NotesExampleData.test2,
-                NotesExampleData.test3,
-                NotesExampleData.test4,
-                NotesExampleData.test5,
-                NotesExampleData.test6,
-                NotesExampleData.test7,
-                NotesExampleData.test8,
-                NotesExampleData.test9,
-                NotesExampleData.test10
-            )
-            repository.insertAll(notes)
-        }
-    }
+//    fun insertNotesList () {
+//        viewModelScope.launch {
+//            val notes = listOf(
+//                NotesExampleData.test1,
+//                NotesExampleData.test2,
+//                NotesExampleData.test3,
+//                NotesExampleData.test4,
+//                NotesExampleData.test5,
+//                NotesExampleData.test6,
+//                NotesExampleData.test7,
+//                NotesExampleData.test8,
+//                NotesExampleData.test9,
+//                NotesExampleData.test10
+//            )
+//            repository.insertAll(notes)
+//        }
+//    }
 
     fun deleteNote(note: NotesData) {
         viewModelScope.launch {

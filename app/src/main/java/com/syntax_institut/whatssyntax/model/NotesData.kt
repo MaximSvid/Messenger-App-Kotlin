@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "notes_table")
 class NotesData  (
-    @PrimaryKey (autoGenerate = false)
-    var id: Long,
+    @PrimaryKey (autoGenerate = true)
+    var id: Long = 0,
     var name: String,
     var text: String,
 

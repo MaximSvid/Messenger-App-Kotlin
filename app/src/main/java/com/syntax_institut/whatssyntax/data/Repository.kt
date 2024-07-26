@@ -43,6 +43,14 @@ class Repository(private val database: NotesDatabase) {
         }
     }
 
+    suspend fun addNote (note: NotesData) {
+        try {
+            database.notesDAO.insert(note)
+        } catch (e: Exception) {
+            Log.e("RepositoryLog", e.message.toString())
+        }
+    }
+
     private val number = 9
     private val key = BuildConfig.apiKey
 
