@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.syntax_institut.whatssyntax.data.Repository
+import com.syntax_institut.whatssyntax.data.local.getDatabase
+import com.syntax_institut.whatssyntax.exampleData.NotesExampleData
 import com.syntax_institut.whatssyntax.model.Calls
 import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
@@ -15,7 +17,10 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = Repository()
+    private val database = getDatabase(application)
+    private val repository = Repository(database)
+
+    val noteList = repository.notesList
     val chatsList = repository.chatsList
 
     val contactList = repository.contactList
@@ -40,14 +45,32 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-
-
     init {
         loadChatsList()
         loadContactList()
         loadProfile()
         loadCalls()
 
+        insertNotesList()
+
+    }
+
+    fun insertNotesList () {
+        viewModelScope.launch {
+            val notes = listOf(
+                NotesExampleData.test1,
+                NotesExampleData.test2,
+                NotesExampleData.test3,
+                NotesExampleData.test4,
+                NotesExampleData.test5,
+                NotesExampleData.test6,
+                NotesExampleData.test7,
+                NotesExampleData.test8,
+                NotesExampleData.test9,
+                NotesExampleData.test10
+            )
+            repository.insertAll(notes)
+        }
     }
 
     fun loadChatsList() {

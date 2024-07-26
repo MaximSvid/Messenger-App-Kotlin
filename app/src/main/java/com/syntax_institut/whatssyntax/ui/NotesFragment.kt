@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.syntax_institut.whatssyntax.MainViewModel
+import com.syntax_institut.whatssyntax.adapter.NotesAdapter
 import com.syntax_institut.whatssyntax.databinding.FragmentNotesBinding
 
 class NotesFragment: Fragment() {
@@ -25,6 +26,10 @@ class NotesFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.noteList.observe(viewLifecycleOwner) {
+            binding.rvNotes.adapter = NotesAdapter(it, viewModel)
+        }
 
     }
 

@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.syntax_institut.whatssyntax.MainViewModel
 import com.syntax_institut.whatssyntax.databinding.ItemChatBinding
 import com.syntax_institut.whatssyntax.databinding.ItemNoteBinding
+import com.syntax_institut.whatssyntax.model.NotesData
 
 class NotesAdapter (
-    private val dataset: List<*>,
+    private val dataset: List<NotesData>,
     private val viewModel: MainViewModel
 
     ): RecyclerView.Adapter<NotesAdapter.ItemViewHolder>() {
@@ -20,7 +21,11 @@ class NotesAdapter (
     }
 
     override fun onBindViewHolder(holder: NotesAdapter.ItemViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val notes = dataset[position]
+        val binding = holder.binding
+
+        binding.tvNoteName.text = notes.name
+        binding.tvNoteText.text = notes.text
     }
 
     override fun getItemCount(): Int {

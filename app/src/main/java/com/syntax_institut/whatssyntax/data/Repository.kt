@@ -4,14 +4,28 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.syntax_institut.whatssyntax.BuildConfig
+import com.syntax_institut.whatssyntax.data.local.NotesDatabase
 import com.syntax_institut.whatssyntax.data.remote.WhatsSyntaxApi
 import com.syntax_institut.whatssyntax.model.Calls
 import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
 import com.syntax_institut.whatssyntax.model.Message
+import com.syntax_institut.whatssyntax.model.NotesData
 import com.syntax_institut.whatssyntax.model.Profile
 
-class Repository() {
+class Repository(private val database: NotesDatabase) {
+
+    val notesList: LiveData<List<NotesData>> = database.notesDAO.getAll()
+
+    suspend fun insertAll (notesList: List<NotesData>) {
+        try {
+            for (note in notesList) {
+                database.notesDAO.insert(note)
+            }
+        } catch (e: Exception) {
+            Log.e("RepositoryLog", e.message.toString())
+        }
+    }
 
     private val number = 9
     private val key = BuildConfig.apiKey
