@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.syntax_institut.whatssyntax.MainViewModel
 import com.syntax_institut.whatssyntax.R
 import com.syntax_institut.whatssyntax.databinding.FragmentNoteDetailBinding
+import com.syntax_institut.whatssyntax.model.NotesData
 
 
 class NoteDetailFragment : Fragment() {
@@ -32,6 +33,16 @@ class NoteDetailFragment : Fragment() {
         viewModel.selectedNote.observe(viewLifecycleOwner) {
             binding.etNoteName.setText(it.name)
             binding.etContent.setText(it.text)
+        }
+
+        binding.btnSave.setOnClickListener {
+            val updateNote = NotesData (
+                viewModel.selectedNote.value!!.id,
+                binding.etNoteName.text.toString(),
+                binding.etContent.text.toString()
+            )
+            viewModel.updateNote(updateNote)
+            findNavController().navigateUp()
         }
 
         binding.btnBack.setOnClickListener {

@@ -50,6 +50,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         _selectedNote.postValue(note)
     }
 
+    fun updateNote(note: NotesData) {
+        viewModelScope.launch {
+            repository.updateNote(note)
+        }
+    }
+
 
 
 
