@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.syntax_institut.whatssyntax.MainViewModel
 import com.syntax_institut.whatssyntax.adapter.NotesAdapter
 import com.syntax_institut.whatssyntax.databinding.FragmentNotesBinding
@@ -29,6 +30,16 @@ class NotesFragment: Fragment() {
 
         viewModel.noteList.observe(viewLifecycleOwner) {
             binding.rvNotes.adapter = NotesAdapter(it, viewModel)
+        }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        binding.btnNewNote.setOnClickListener {
+
+
+
         }
 
 

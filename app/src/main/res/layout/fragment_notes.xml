@@ -36,7 +36,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:background="@drawable/baseline_edit_24"
-                android:layout_marginEnd="12dp"/>
+                android:layout_marginEnd="12dp"
+                android:visibility="gone"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -45,7 +46,7 @@
     </Toolbar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
+        android:id="@+id/btn_newNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
