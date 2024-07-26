@@ -9,7 +9,6 @@ class NotesData  (
     var id: Long,
     var name: String,
     var text: String,
-    var image: String
 
 )
 
