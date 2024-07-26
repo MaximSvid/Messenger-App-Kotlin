@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarNoteNew"
-        android:text="@string/name_of_note"
+        android:text="Titel"
         android:textStyle="bold"
         android:textSize="18sp"
         android:layout_marginTop="12dp"
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_noteNameDetail"
-        android:text="@string/content"
+        android:text="Text"
         android:layout_marginStart="12dp"
         android:layout_marginTop="6dp"
         android:textStyle="bold"/>

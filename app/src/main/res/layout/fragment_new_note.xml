@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarNoteNew"
-        android:text="@string/name_of_note"
+        android:text="Titel"
         android:textStyle="bold"
         android:textSize="18sp"
         android:layout_marginTop="12dp"
@@ -74,20 +74,35 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_noteNameDetail"
-        android:text="@string/content"
+        android:text="Text"
         android:layout_marginStart="12dp"
         android:layout_marginTop="6dp"
         android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/et_content"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="13sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_content"
-        app:layout_constraintTop_toTopOf="@+id/tv_content"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_content"
-        android:layout_marginStart="4dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="12dp"
+        android:gravity="top"
+        android:scrollbars="vertical"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="12dp"/>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="56dp"
+        android:text="@string/save"/>
 
 
 
