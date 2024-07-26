@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.NewNoteFragment">
+    tools:context=".ui.NoteDetailFragment">
 
     <Toolbar
         android:id="@+id/toolbarNoteNew"
@@ -17,8 +17,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-
 
             <Button
                 android:id="@+id/btn_back"
@@ -88,8 +86,6 @@
         app:layout_constraintTop_toTopOf="@+id/tv_content"
         app:layout_constraintBottom_toBottomOf="@+id/tv_content"
         android:layout_marginStart="4dp"/>
-
-
 
 
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.syntax_institut.whatssyntax.MainViewModel
 import com.syntax_institut.whatssyntax.R
 import com.syntax_institut.whatssyntax.databinding.FragmentNotesBinding
@@ -24,6 +25,16 @@ class NewNoteFragment : Fragment() {
         binding = FragmentNotesBinding.inflate(layoutInflater)
         // Inflate the layout for this fragment
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 

@@ -39,7 +39,7 @@ class NotesFragment: Fragment() {
         binding.btnNewNote.setOnClickListener {
 
 
-
+            findNavController().navigate(NotesFragmentDirections.actionNotesFragmentToNewNoteFragment())
         }
 
 
