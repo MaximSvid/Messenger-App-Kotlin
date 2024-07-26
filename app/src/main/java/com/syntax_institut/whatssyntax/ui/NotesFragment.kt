@@ -91,36 +91,4 @@ class NotesFragment: Fragment() {
         }
     }
 
-
-//    private fun showAlertDialog(context: Context) {
-//       val dialogBuilder = context?.let { AlertDialog.Builder(it) }
-//        val inflater = LayoutInflater.from(context)
-//        val dialogView = inflater.inflate(R.layout.alert_dialog_new_note, null)
-//        if (dialogBuilder != null) {
-//            dialogBuilder.setView(dialogView)
-//        }
-//
-//        val name = dialogView.findViewById<EditText>(R.id.alert_titel)
-//        val message = dialogView.findViewById<EditText>(R.id.alert_descr)
-//
-//        if (dialogBuilder != null) {
-//            dialogBuilder.setTitle("Add Note")
-//
-//            dialogBuilder.setPositiveButton("Save") { _, _ ->
-//                val updateNote = NotesData(
-//                    name = name.text.toString(),
-//                    text = message.text.toString()
-//                )
-//                viewModel.addNote(updateNote)
-//
-//            }
-//
-//            dialogBuilder.setNegativeButton("Cancel") {dialog, _ ->
-//                dialog.dismiss()
-//            }
-//            val alertDialog = dialogBuilder.create()
-//            alertDialog.show()
-//        }
-//    }
-
 }

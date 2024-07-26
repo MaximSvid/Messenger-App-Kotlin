@@ -44,52 +44,34 @@
 
     </Toolbar>
 
-    <TextView
-        android:id="@+id/tv_noteNameDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarNoteNew"
-        android:text="@string/titel"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="12dp"/>
+
 
     <EditText
         android:id="@+id/et_noteName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/tv_noteNameDetail"
-        android:layout_marginStart="4dp"
-        android:textSize="14sp"
-        app:layout_constraintTop_toTopOf="@+id/tv_noteNameDetail"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_noteNameDetail"/>
-
-    <TextView
-        android:id="@+id/tv_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_noteNameDetail"
-        android:text="@string/text"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="6dp"
-        android:textStyle="bold"/>
+        android:layout_marginEnd="12dp"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarNoteNew"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
 
     <EditText
         android:id="@+id/et_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@+id/et_noteName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_content"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="12dp"
         android:gravity="top"
         android:scrollbars="vertical"
         android:inputType="textMultiLine"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="12dp"
         android:layout_marginStart="12dp"/>
 
     <Button
