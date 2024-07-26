@@ -26,6 +26,10 @@ class NotesAdapter (
 
         binding.tvNoteName.text = notes.name
         binding.tvNoteText.text = notes.text
+
+        binding.btnDelete.setOnClickListener {
+            viewModel.deleteNote(notes)
+        }
     }
 
     override fun getItemCount(): Int {

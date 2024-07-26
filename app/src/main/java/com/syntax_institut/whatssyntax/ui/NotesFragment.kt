@@ -31,6 +31,8 @@ class NotesFragment: Fragment() {
             binding.rvNotes.adapter = NotesAdapter(it, viewModel)
         }
 
+
+
     }
 
 }

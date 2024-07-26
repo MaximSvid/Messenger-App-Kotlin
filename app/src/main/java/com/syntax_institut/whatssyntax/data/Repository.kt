@@ -27,6 +27,14 @@ class Repository(private val database: NotesDatabase) {
         }
     }
 
+    suspend fun deleteNote(note: NotesData) {
+        try {
+            database.notesDAO.delete(note)
+        } catch (e: Exception) {
+            Log.e("RepositoryLog", e.message.toString())
+        }
+    }
+
     private val number = 9
     private val key = BuildConfig.apiKey
 

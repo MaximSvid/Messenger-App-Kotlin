@@ -12,6 +12,7 @@ import com.syntax_institut.whatssyntax.model.Calls
 import com.syntax_institut.whatssyntax.model.Chats
 import com.syntax_institut.whatssyntax.model.Contact
 import com.syntax_institut.whatssyntax.model.Message
+import com.syntax_institut.whatssyntax.model.NotesData
 import com.syntax_institut.whatssyntax.model.Profile
 import kotlinx.coroutines.launch
 
@@ -70,6 +71,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 NotesExampleData.test10
             )
             repository.insertAll(notes)
+        }
+    }
+
+    fun deleteNote(note: NotesData) {
+        viewModelScope.launch {
+            repository.deleteNote(note)
         }
     }
 
