@@ -5,12 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.syntax_institut.whatssyntax.MainViewModel
 import com.syntax_institut.whatssyntax.R
 import com.syntax_institut.whatssyntax.databinding.FragmentNoteDetailBinding
 
 
 class NoteDetailFragment : Fragment() {
     private lateinit var binding: FragmentNoteDetailBinding
+    private val viewModel: MainViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -20,6 +24,19 @@ class NoteDetailFragment : Fragment() {
         binding = FragmentNoteDetailBinding.inflate(layoutInflater, container, false)
         // Inflate the layout for this fragment
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.selectedNote.observe(viewLifecycleOwner) {
+            binding.etNoteName.setText(it.name)
+            binding.etContent.setText(it.text)
+        }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 }
 

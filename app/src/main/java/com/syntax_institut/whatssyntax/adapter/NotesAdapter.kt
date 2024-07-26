@@ -2,11 +2,13 @@ package com.syntax_institut.whatssyntax.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.syntax_institut.whatssyntax.MainViewModel
 import com.syntax_institut.whatssyntax.databinding.ItemChatBinding
 import com.syntax_institut.whatssyntax.databinding.ItemNoteBinding
 import com.syntax_institut.whatssyntax.model.NotesData
+import com.syntax_institut.whatssyntax.ui.NotesFragmentDirections
 
 class NotesAdapter (
     private val dataset: List<NotesData>,
@@ -29,6 +31,12 @@ class NotesAdapter (
 
         binding.btnDelete.setOnClickListener {
             viewModel.deleteNote(notes)
+        }
+
+        binding.cvNote.setOnClickListener {
+            viewModel.selectedNote(notes)
+
+            holder.itemView.findNavController().navigate(NotesFragmentDirections.actionNotesFragmentToNoteDetailFragment())
         }
     }
 

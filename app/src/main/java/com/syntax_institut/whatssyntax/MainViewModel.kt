@@ -41,7 +41,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private var _currentCall = MutableLiveData<List<Calls>>()
     var currentCall: LiveData<List<Calls>> = _currentCall
 
-    private var _message = MutableLiveData<Message>()
+
+
+    private var _selectedNote = MutableLiveData<NotesData>()
+    val selectedNote: LiveData<NotesData> = _selectedNote
+
+    fun selectedNote(note: NotesData) {
+        _selectedNote.postValue(note)
+    }
 
 
 

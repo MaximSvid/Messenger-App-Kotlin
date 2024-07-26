@@ -42,7 +42,10 @@
         android:name="com.syntax_institut.whatssyntax.ui.NotesFragment"
         android:label="NotesFragment" >
         <action
-            android:id="@+id/action_notesFragment_to_newNoteFragment"
+            android:id="@+id/action_notesFragment_to_noteDetailFragment"
+            app:destination="@id/noteDetailFragment" />
+        <action
+            android:id="@+id/action_notesFragment_to_newNoteFragment2"
             app:destination="@id/newNoteFragment" />
     </fragment>
     <fragment
@@ -52,6 +55,15 @@
         tools:layout="@layout/fragment_new_note" >
         <action
             android:id="@+id/action_newNoteFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteDetailFragment"
+        android:name="com.syntax_institut.whatssyntax.ui.NoteDetailFragment"
+        android:label="fragment_note_detail"
+        tools:layout="@layout/fragment_note_detail" >
+        <action
+            android:id="@+id/action_noteDetailFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
     </fragment>
 </navigation>
