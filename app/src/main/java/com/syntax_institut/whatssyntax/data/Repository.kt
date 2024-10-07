@@ -116,7 +116,7 @@ class Repository(private val database: NotesDatabase) {
 
     suspend fun loadChatMessages(chatId: Int) {
         try {
-            val response = WhatsSyntaxApi.retrofitService.getChatMessage(number, chatId , key)
+            val response = WhatsSyntaxApi.retrofitService.getChfatMessage(number, chatId , key)
             _messageList.postValue(response)
         } catch (e: Exception){
             Log.e("RepositoryLog", e.message.toString())

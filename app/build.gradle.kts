@@ -50,6 +50,7 @@ android {
 
 dependencies {
 
+    implementation("androidx.lifecycle:lifecycle-viewmodel-android:2.8.6")
     val retrofitVersion = "2.9.0"
     val roomVersion = "2.6.0"
 

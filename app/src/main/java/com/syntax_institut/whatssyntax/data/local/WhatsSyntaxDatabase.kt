@@ -22,7 +22,7 @@ fun getDatabase(context: Context): NotesDatabase {
                 NotesDatabase::class.java,
                 "notes_database"
             )
-                .fallbackToDestructiveMigration()
+   //             .fallbackToDestructiveMigration()
                 .build()
         }
         return INSTANCE
